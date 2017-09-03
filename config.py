@@ -1,0 +1,8 @@
+twit_consumer_key = "z5CxEkYh4WBFzKIFct8YNITuq"
+twit_consumer_secret = "jnxeDYgh1nupvr41mbOz8UnMAB3oPI4rtXtJpoYbiS0VanqaHV"
+twit_access_token = "903177269396377600-ZHAJ9YIzGVvrMzcnz0jFSkrtrvb7cy2"
+twit_access_token_secret = "gKaKpErwSKSyN10D13tzHMIZpAOjQdpOOfFMcISsMyMA2"
+
+spot_client_id = "ee905b3d7d5a466ead7e27e883ba53db"
+spot_client_secret = "0f15ce29209245aa8323b8c37b4077e4"
+spot_auth_code = "AQDRtybCZmU2p44DHdGfjlPfqAda9EEwyt0VZBvjSOtufiu7cU2f_tS06RxWMwRUtkEWlyemRKYCYk4v26SEoHttwVP7O-9mejBOdw1oQGCB7WUllkimpup3-jDrfEA-TM7sCl_CU-FBh77g8n-tRN9RJl7ZgnikiZCOqT-klZBhk0qVuZvcQFBlfzqer_UDHuc6aw"
