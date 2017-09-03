@@ -77,7 +77,7 @@ def tweet():
     if song:
         log = u"WEEK TWEET: \n Our weekly hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
         print log.encode("utf-8")
-        #tweet = api.update_status(status="Our weekly hot pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
+        tweet = api.update_status(status="Our weekly hot pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
 
 def pop_tweet():
     print "collecting pop..."
@@ -96,7 +96,7 @@ def pop_tweet():
     if song:
         log = u"WEEK TWEET: \n Pop Hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
         print log.encode("utf-8")
-        #tweet = api.update_status(status="Pop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
+        tweet = api.update_status(status="Pop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
     return genres
 
@@ -117,7 +117,7 @@ def rap_tweet():
     if song:
         log = u"WEEK TWEET: \n Hip Hop Hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
         print log.encode("utf-8")
-        #tweet = api.update_status(status="Hip Hop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
+        tweet = api.update_status(status="Hip Hop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
     return genres
 
