@@ -40,3 +40,8 @@ update-checker==0.16
 urllib3==1.21.1
 waitress==1.0.2
 Werkzeug==0.12.2
+tweepy==3.5.0
+spotipy==2.4.4
+random==2.4
+threading==2.6
+time==2.3
