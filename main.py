@@ -1,9 +1,10 @@
 from config import *
 from spotipy.oauth2 import SpotifyClientCredentials
-from time import sleep
 import random
 import requests
 import spotipy
+import sys
+import time
 import threading
 import tweepy
 
@@ -77,7 +78,7 @@ def tweet():
     if song:
         log = u"WEEK TWEET: \n Our weekly hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
         print log.encode("utf-8")
-        tweet = api.update_status(status="Our weekly hot pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
+        tweet = api.update_status(status="Today\'s hot pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
 
 def pop_tweet():
     print "collecting pop..."
@@ -132,13 +133,16 @@ def set_interval(func1, func2, func3, sec):
     t.start()
 
 def run():
-    #604800
     print "First Tweet.... \n\n"
     tweet()
     pop_tweet()
     rap_tweet()
     print "Sleeping... \n \n"
     set_interval(tweet, pop_tweet, rap_tweet, 604800)
+    for i in xrange(604800, 0, -1):
+        time.sleep(1)
+        sys.stdout.write(str(i)+' ')
+        sys.stdout.flush()
 
 if __name__ == "__main__":
     run()
