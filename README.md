@@ -12,9 +12,9 @@ The bot parses through Spotify's data for new releases. For the daily _Hot Pick_
 Once data is collected, it is posted through the Tweepy python package.
 
 ### Built With
-*Python - language used
-*Spotipy - Collecting song data
-*Tweepy - Send tweets
+* Python - language used
+* Spotipy - Collecting song data
+* Tweepy - Send tweets
 
 ### Author
-*Daniel Lindo - https://github.com/Dlindo28
+* Daniel Lindo - https://github.com/Dlindo28
