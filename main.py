@@ -122,15 +122,20 @@ def rap_tweet():
         genres = []
     return genres
 
-def set_interval(func1, func2, func3, sec):
+def set_interval(func1, func2, func3, func4, sec):
     def func_wrapper():
         set_interval(func1, func2, func3, sec)
         func1()
         func2()
         func3()
+        func4()
         print "Sleeping... \n \n"
     t = threading.Timer(sec, func_wrapper)
     t.start()
+
+def follow():
+    for follower in tweepy.Cursor(api.followers).items():
+        follower.follow()
 
 def run():
     print "First Tweet.... \n\n"
@@ -138,11 +143,10 @@ def run():
     pop_tweet()
     rap_tweet()
     print "Sleeping... \n \n"
-    set_interval(tweet, pop_tweet, rap_tweet, 604800)
-    for i in xrange(604800, 0, -1):
+    set_interval(tweet, pop_tweet, rap_tweet, follow, 86400)
+    for i in range(86400):
         time.sleep(1)
-        sys.stdout.write(str(i)+' ')
-        sys.stdout.flush()
+        print i
 
 if __name__ == "__main__":
     run()
