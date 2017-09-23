@@ -25,3 +25,6 @@ Once data is collected, it is posted through the Tweepy python package.
 
 #### What's Next?
 I plan on giving the bot more genre capabilities
+
+#### Known Bugs
+Follow for follow capability not executing
