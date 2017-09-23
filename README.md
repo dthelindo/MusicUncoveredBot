@@ -24,4 +24,4 @@ Once data is collected, it is posted through the Tweepy python package.
 * Daniel Lindo - https://github.com/Dlindo28
 
 #### What's Next?
-I plan on giving the bot follow-for-follow functionality and adding more genre capabilities
+I plan on giving the bot more genre capabilities
