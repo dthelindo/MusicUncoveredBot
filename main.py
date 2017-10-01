@@ -147,7 +147,7 @@ def run():
     rap_tweet()
     #print "Sleeping... \n \n"
     set_interval(tweet, pop_tweet, rap_tweet, 86400)
-    follow(60)
+    follow(5)
 
 
 if __name__ == "__main__":
