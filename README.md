@@ -1,7 +1,3 @@
-## MusicUncovered
-
-@MusicUncovered_ 
-=======
 ## MusicUncovered (@MusicUncovered_)
 
 ### What is MusicUncovered?
@@ -11,7 +7,7 @@ Currently, MusicUncovered is guided to collect data for new, popular tracks in h
 Follow @MusicUncovered_ on Twitter for daily updates.
 
 ### How does it work?
-The bot parses through Spotify's data for new releases. For the daily _Hot Pick_ a random track with high popularity is chosen from the collection. For _Hip Hop Hot Pick_ and _Pop Hot Pick_ the bot searches for tracks with hip hop and pop genres, respectively.
+The bot parses through Spotify's data for new releases. For the daily _Hot Pick_ a random track with high popularity is chosen from the collection. For _Hip Hop Hot Pick_ and _Pop Hot Pick_ the bot searches for tracks with hip hop and pop genres, respectively. Follow for follow capability.
 
 Once data is collected, it is posted through the Tweepy python package.
 
@@ -19,9 +15,10 @@ Once data is collected, it is posted through the Tweepy python package.
 * Python - language used
 * Spotipy - Collecting song data
 * Tweepy - Send tweets
+* Heroku server
 
 ### Author
 * Daniel Lindo - https://github.com/Dlindo28
 
 #### What's Next?
-I plan on giving the bot more genres  and follow for follow capabilities
+I plan on giving the bot more genres
