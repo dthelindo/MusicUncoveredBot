@@ -19,6 +19,7 @@ Once data is collected, it is posted through the Tweepy python package.
 * Python - language used
 * Spotipy - Collecting song data
 * Tweepy - Send tweets
+* Heroku server
 
 ### Author
 * Daniel Lindo - https://github.com/Dlindo28
