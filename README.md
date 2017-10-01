@@ -1,7 +1,3 @@
-## MusicUncovered
-
-@MusicUncovered_ 
-=======
 ## MusicUncovered (@MusicUncovered_)
 
 ### What is MusicUncovered?
