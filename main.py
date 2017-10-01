@@ -63,7 +63,7 @@ def get_releases():
     return album_list
 
 def tweet():
-    print "collecting weekly..."
+    #print "collecting weekly..."
     song = []
     global popularity
     popularity = 0
@@ -73,15 +73,15 @@ def tweet():
             song = album_list[random.randint(0, len(album_list))]
             search_song(song[1], song[0])
         except:
-            print "Retrying..."
+            #print "Retrying..."
             tweet()
     if song:
         log = u"WEEK TWEET: \n Our weekly hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
-        print log.encode("utf-8")
+        #print log.encode("utf-8")
         tweet = api.update_status(status="Today\'s hot pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
 
 def pop_tweet():
-    print "collecting pop..."
+    #print "collecting pop..."
     song = []
     global popularity
     global genres
@@ -92,17 +92,17 @@ def pop_tweet():
             song = album_list[random.randint(0, len(album_list))]
             search_artist(song[0])
         except:
-            print "Retrying..."
+            #print "Retrying..."
             pop_tweet()
     if song:
         log = u"WEEK TWEET: \n Pop Hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
-        print log.encode("utf-8")
+        #print log.encode("utf-8")
         tweet = api.update_status(status="Pop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
     return genres
 
 def rap_tweet():
-    print "collecting rap..."
+    #print "collecting rap..."
     song = []
     global popularity
     global genres
@@ -113,40 +113,42 @@ def rap_tweet():
             song = album_list[random.randint(0, len(album_list))]
             search_artist(song[0])
         except:
-            print "Retrying..."
+            #print "Retrying..."
             rap_tweet()
     if song:
         log = u"WEEK TWEET: \n Hip Hop Hot pick: \n" + song[0] + u" - " + song[1] + u"\n Listen here! " + song[2] + u"\nPopularity: " + str(popularity) + "\n \n"
-        print log.encode("utf-8")
+        #print log.encode("utf-8")
         tweet = api.update_status(status="Hip Hop Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
     return genres
 
-def set_interval(func1, func2, func3, func4, sec):
+def set_interval(func1, func2, func3, sec):
     def func_wrapper():
-        set_interval(func1, func2, func3, func4, sec)
+        set_interval(func1, func2, func3, sec)
         func1()
         func2()
         func3()
-        func4()
-        print "Sleeping... \n \n"
+        #print "Sleeping... \n \n"
     t = threading.Timer(sec, func_wrapper)
     t.start()
 
-def follow():
-    for follower in tweepy.Cursor(api.followers).items():
-        follower.follow()
+def follow(sec):
+    def wrapper():
+        follow(sec)
+        for follower in tweepy.Cursor(api.followers).items():
+            follower.follow()
+    threading.Timer(sec, wrapper).start()
+
 
 def run():
-    print "First Tweet.... \n\n"
+    #print "First Tweet.... \n\n"
     tweet()
     pop_tweet()
     rap_tweet()
-    print "Sleeping... \n \n"
-    set_interval(tweet, pop_tweet, rap_tweet, follow, 86400)
-    for i in range(86400):
-        time.sleep(1)
-        print i
+    #print "Sleeping... \n \n"
+    set_interval(tweet, pop_tweet, rap_tweet, 86400)
+    follow(60)
+
 
 if __name__ == "__main__":
     run()
