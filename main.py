@@ -124,7 +124,7 @@ def rap_tweet():
 
 def set_interval(func1, func2, func3, func4, sec):
     def func_wrapper():
-        set_interval(func1, func2, func3, sec)
+        set_interval(func1, func2, func3, func4, sec)
         func1()
         func2()
         func3()
