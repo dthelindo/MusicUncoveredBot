@@ -123,7 +123,7 @@ def edm_tweet():
             song = album_list[random.randint(0, len(album_list))]
             search_artist(song[0])
         except:
-            rap_tweet()
+            edm_tweet()
     if song:
         tweet = api.update_status(status="EDM Hot Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
@@ -140,7 +140,7 @@ def country_tweet():
             song = album_list[random.randint(0, len(album_list))]
             search_artist(song[0])
         except:
-            rap_tweet()
+            country_tweet()
     if song:
         tweet = api.update_status(status="Country Daily Pick: \n" + song[0] + " - " + song[1] + "\n Listen here! " + song[2])
         genres = []
