@@ -23,3 +23,6 @@ Once data is collected, it is posted through the Tweepy python package.
 #### What's New? (10/4/17)
 * Added country and edm genre support
 * Follow for follow functionality
+
+#### To-Do
+* Clean up code for less repetition
