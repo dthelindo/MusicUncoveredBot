@@ -7,7 +7,7 @@ Currently, MusicUncovered is guided to collect data for new, popular tracks in h
 Follow @MusicUncovered_ on Twitter for daily updates.
 
 ### How does it work?
-The bot parses through Spotify's data for new releases. For the daily _Hot Pick_ a random track with high popularity is chosen from the collection. For _Hip Hop Hot Pick_ , _Pop Hot Pick_, etc. the bot searches for tracks with the relative genres. Follow for follow capability now supported.
+The bot parses through Spotify's data for new releases. For the daily _Hot Pick_ a random track with high popularity is chosen from the collection. For _Hip Hop Hot Pick_ , _Pop Hot Pick_, etc. the bot searches for tracks with the relative genres.
 
 Once data is collected, it is posted through the Tweepy python package.
 
@@ -18,8 +18,11 @@ Once data is collected, it is posted through the Tweepy python package.
 * Heroku server
 
 ### Author
-* Daniel Lindo - https://github.com/Dlindo28
+* Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo-772894142/ - https://twitter.com/DtheLindo
 
 #### What's New? (10/4/17)
 * Added country and edm genre support
-* Follow for follow functionality
+
+#### To-Do
+* Clean up code for less repetition
+* Probihibit posting same song multiple time
