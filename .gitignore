@@ -102,5 +102,6 @@ ENV/
 
 config.py
 test.py
+test2.py
 *.pyc
 Procfile.windows
