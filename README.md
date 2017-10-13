@@ -26,3 +26,4 @@ Once data is collected, it is posted through the Tweepy python package.
 #### To-Do
 * ~~Clean up code for less repetition~~
 * Probihibit posting same song multiple times
+* Revise follow for follow capabilities
