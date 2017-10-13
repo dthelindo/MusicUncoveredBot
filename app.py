@@ -34,13 +34,14 @@ def tweet(genres):
     album_list = []
     popularity = 0
     track_genres = []
+    status = None
     try:
         album_list = get_releases(album_list)
         song = album_list[random.randint(0, len(album_list))]
         track_genres = find_genres(song[0], track_genres)
         popularity = find_popularity(song[1], song[0], popularity)
         if song and popularity >= 55 and any(x in track_genres for x in genres[1:]):
-            api.update_status(status=genres[0] + " Pick: \n" + song[0] + " - " + song[1] + "\nListen here! " + song[2])
+            status = api.update_status(status=genres[0] + " Pick: \n" + song[0] + " - " + song[1] + "\nListen here! " + song[2])
         else:
             tweet(genres)
     except:
