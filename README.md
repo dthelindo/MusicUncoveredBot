@@ -20,9 +20,9 @@ Once data is collected, it is posted through the Tweepy python package.
 ### Author
 * Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo-772894142/ - https://twitter.com/DtheLindo
 
-#### What's New? (10/4/17)
-* Added country and edm genre support
+#### What's New?
+* Added country and edm genre support (10/4/17)
 
 #### To-Do
-* Clean up code for less repetition
-* Probihibit posting same song multiple time
+* ~~Clean up code for less repetition~~
+* Probihibit posting same song multiple times
