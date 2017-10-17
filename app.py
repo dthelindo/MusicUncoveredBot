@@ -42,6 +42,7 @@ def tweet(genres):
         popularity = find_popularity(song[1], song[0], popularity)
         if song and popularity >= 55 and any(x in track_genres for x in genres[1:]):
             status = api.update_status(status=genres[0] + " Pick: \n" + song[0] + " - " + song[1] + "\nListen here! " + song[2])
+            return
         else:
             tweet(genres)
     except:
