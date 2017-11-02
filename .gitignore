@@ -101,7 +101,8 @@ ENV/
 .mypy_cache/
 
 config.py
+testapp.py
+testexec.py
 test.py
-test2.py
 *.pyc
 Procfile.windows
