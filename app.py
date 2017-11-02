@@ -18,6 +18,7 @@ def main():
         "EDM": ["EDM", "edm", "elctronic trap", "electro house", "house", "electro", "club", "dance", "electronic"],
         "Country": ["Country", "contemporary country", "country", "country road"],
     }
+
     song_list = get_singles()
     album_list = get_albums()
 
