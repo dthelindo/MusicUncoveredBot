@@ -1,11 +1,7 @@
 from config import *
 from spotipy.oauth2 import SpotifyClientCredentials
 import random
-import requests
 import spotipy
-import sys
-import time
-import threading
 import tweepy
 
 auth = tweepy.OAuthHandler(twit_consumer_key, twit_consumer_secret)
@@ -22,35 +18,34 @@ def main():
         "EDM": ["EDM", "edm", "elctronic trap", "electro house", "house", "electro", "club", "dance", "electronic"],
         "Country": ["Country", "contemporary country", "country", "country road"],
     }
+    album_list = get_releases()
 
-    tweet(genre_list["Daily"])
-    tweet(genre_list["Pop"])
-    tweet(genre_list["Hip Hop"])
-    tweet(genre_list["EDM"])
-    tweet(genre_list["Country"])
+    song_tweet(genre_list["Daily"], album_list)
+    song_tweet(genre_list["Pop"], album_list)
+    song_tweet(genre_list["Hip Hop"], album_list)
+    song_tweet(genre_list["EDM"], album_list)
+    song_tweet(genre_list["Country"], album_list)
 
 
-def tweet(genres):
-    album_list = []
-    popularity = 0
-    track_genres = []
-    status = None
-    try:
-        album_list = get_releases(album_list)
-        song = album_list[random.randint(0, len(album_list))]
-        track_genres = find_genres(song[0], track_genres)
-        popularity = find_popularity(song[1], song[0], popularity)
-        if song and popularity >= 55 and any(x in track_genres for x in genres[1:]):
-            status = api.update_status(status=genres[0] + " Pick: \n" + song[0] + " - " + song[1] + "\nListen here! " + song[2])
+def song_tweet(genres, album_list):
+    song = album_list[random.randint(0, len(album_list) - 1)]
+    track_genres = find_genres(song[0])
+    if song and any(x in track_genres for x in genres[1:]):
+        api.update_status(status=genres[0] + " Pick: \n" + song[0] + " - " + song[1] + "\nListen here! " + song[2])
+        return
+    else:
+        song_tweet(genres, album_list)
+
+
+def album_tweet():
+    albums = sp.new_releases(limit=10)
+    for album in albums["albums"]["items"]:
+        if album["album_type"] == "album":
+            api.update_status(status="Album of the Week: " + album["artists"][0]["name"] + " - " + album["name"] + "\nListen here! " + album["href"])
             return
-        else:
-            tweet(genres)
-    except:
-        tweet(genres)
-
-
 #function searches for song & popularity
-def find_popularity(track, artist, popularity):
+def find_popularity(track, artist):
+    popularity = 0
     search = sp.search(q=track, type="track")
     for track in search["tracks"]["items"]:
         artist_name = track["artists"][0]["name"]
@@ -59,7 +54,8 @@ def find_popularity(track, artist, popularity):
     return popularity
 
 #function searches target artist for genre
-def find_genres(artist, track_genres):
+def find_genres(artist):
+    track_genres = []
     search = sp.search(q=artist, type="artist", limit=1)
     i = 0
     while i < len(search["artists"]["items"]):
@@ -70,7 +66,8 @@ def find_genres(artist, track_genres):
     return track_genres
 
 #fetches new releases
-def get_releases(album_list):
+def get_releases():
+    album_list = []
     releases = sp.new_releases()
     while releases:
             albums = releases['albums']
