@@ -27,7 +27,7 @@ multiprocessing==2.6.2.1
 numpy==1.12.0
 olefile==0.44
 packaging==16.8
-Pillow==4.2.1
+Pillow==6.2.0
 praw==4.5.1
 prawcore==0.10.1
 Pygments==2.1.3
