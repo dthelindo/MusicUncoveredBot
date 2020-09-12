@@ -18,7 +18,7 @@ Once data is collected, it is posted through the Tweepy python package.
 * Heroku server
 
 ### Contributors
-* Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo-772894142/ - https://twitter.com/DtheLindo
+* Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo/
 
 #### What's New?
 * Added country and edm genre support (10/4/17)
