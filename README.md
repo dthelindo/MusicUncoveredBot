@@ -18,14 +18,4 @@ Once data is collected, it is posted through the Tweepy python package.
 * Heroku server
 
 ### Contributors
-* Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo-772894142/ - https://twitter.com/DtheLindo
-
-#### What's New?
-* Added country and edm genre support (10/4/17)
-* Album of the week (11/1/17)
-
-#### To-Do
-* ~~Clean up code for less repetition~~
-* Probihibit posting same song multiple times
-* Revise follow for follow capabilities
-* Generate tweet for rising artists
+* Daniel Lindo - https://github.com/Dlindo28 - https://www.linkedin.com/in/daniel-lindo/
