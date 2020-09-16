@@ -4,11 +4,15 @@ MusicUncovered is a twitter bot that collects data using the Spotipy API,
 bringing users new, popular music weekly. Currently, MusicUncovered is guided
 to collect data for new, popular tracks in hip hop, pop, country and edm.
 """
+
 import os
 import requests
 import random
+import shelve
 from requests_oauthlib import OAuth1
 from entry import Entry
+
+db = shelve.open("used_entries")
 
 
 def get_spotify_header():
@@ -66,28 +70,30 @@ def get_entries():
         link = release["external_urls"]["spotify"]
         genres = get_genres(artist_id)
 
-        if release["album_type"] == "single":
-            tracks_url = "https://api.spotify.com/v1/albums/" + \
-                release["id"] + "/tracks"
-            tracks = requests.get(
-                tracks_url, headers=spotify_access_header).json()
-            track_id = tracks["items"][0]["id"]
+        if link not in db:
+            if release["album_type"] == "single":
+                tracks_url = "https://api.spotify.com/v1/albums/" + \
+                    release["id"] + "/tracks"
+                tracks = requests.get(
+                    tracks_url, headers=spotify_access_header).json()
+                track_id = tracks["items"][0]["id"]
 
-            pop_url = "https://api.spotify.com/v1/tracks/" + track_id
-            popularity = requests.get(
-                pop_url, headers=spotify_access_header).json()
-            popularity = popularity["popularity"]
+                pop_url = "https://api.spotify.com/v1/tracks/" + track_id
+                popularity = requests.get(
+                    pop_url, headers=spotify_access_header).json()
+                popularity = popularity["popularity"]
 
-            entry = Entry(artist, title, "single", link, popularity, genres)
-            singles_list.append(entry)
-        elif release["album_type"] == "album":
-            pop_url = "https://api.spotify.com/v1/albums/" + release["id"]
-            popularity = requests.get(
-                pop_url, headers=spotify_access_header).json()
-            popularity = popularity["popularity"]
+                entry = Entry(artist, title, "single",
+                              link, popularity, genres)
+                singles_list.append(entry)
+            elif release["album_type"] == "album":
+                pop_url = "https://api.spotify.com/v1/albums/" + release["id"]
+                popularity = requests.get(
+                    pop_url, headers=spotify_access_header).json()
+                popularity = popularity["popularity"]
 
-            entry = Entry(artist, title, "album", link, popularity, genres)
-            albums_list.append(entry)
+                entry = Entry(artist, title, "album", link, popularity, genres)
+                albums_list.append(entry)
 
     return singles_list, albums_list
 
@@ -137,6 +143,7 @@ def send_tweet(entry, is_daily=False):
         os.environ.get("TWITTER_ACCESS_SECRET")
     )
     res = requests.post(url, params=params, auth=auth)
+    db[entry.link] = True
     return res
 
 
@@ -146,3 +153,7 @@ if __name__ == "__main__":
     albums = sorted(albums, key=lambda e: e.popularity, reverse=True)
     tweet_singles(singles)
     tweet_album(albums)
+
+    if len(db) > 1000:
+        db.clear()
+    db.close()

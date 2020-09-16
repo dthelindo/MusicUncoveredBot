@@ -106,3 +106,4 @@ testexec.py
 test.py
 *.pyc
 Procfile.windows
+used_entries.db
