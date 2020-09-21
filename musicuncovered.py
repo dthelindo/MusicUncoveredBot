@@ -119,7 +119,9 @@ def tweet_singles(singles):
     has been found and tweeted.
     """
     genres_left = {"Daily", "Hip Hop", "Pop", "Electronic", "Country"}
-    while genres_left:
+    for _ in range(len(singles)):
+        if not genres_left:
+            break
         choice = singles[random.randint(0, len(singles) - 1)]
         if "Daily" in genres_left:
             send_tweet(choice, is_daily=True)
@@ -149,7 +151,8 @@ def send_tweet(entry, is_daily=False):
         os.environ.get("TWITTER_ACCESS_SECRET")
     )
     res = requests.post(url, params=params, auth=auth)
-    used_links.insert_one({"link": entry.link})
+    used_links.insert_one(
+        {"link": entry.link, "artist": entry.artist, "title": entry.title})
     return res
 
 

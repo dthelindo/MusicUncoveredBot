@@ -37,10 +37,10 @@ class Entry:
             return "None"
 
         genre_dict = {
-            "Hip Hop": {"Hip Hop", "rap", "trap music", "hip hop", "dwn trap", "r-n-b", "trip-hop"},
-            "Pop": {"Pop", "pop", "post-teen pop", "pop christmas", "dance", "indie pop"},
-            "Electronic": {"EDM", "edm", "elctronic trap", "electro house", "house", "electro", "club", "dance", "electronic"},
-            "Country": {"Country", "contemporary country", "country", "country road"},
+            "Hip Hop": {"rap", "trap music", "hip hop", "dwn trap", "r-n-b", "trip-hop"},
+            "Pop": {"pop", "post-teen pop", "pop christmas", "dance", "indie pop"},
+            "Electronic": {"edm", "elctronic trap", "electro house", "house", "electro", "club", "dance", "electronic"},
+            "Country": {"contemporary country", "country", "country road"},
         }
 
         for genre in self.genres:
@@ -53,7 +53,7 @@ class Entry:
     def get_tweet_str(self, is_daily=False):
         """Formats entry for a tweet for the given genre"""
         if self.type == "single":
-            return "Today's {} Pick: \n{} - {} \nListen Here! {}".format(
+            return "This week's {} Pick: \n{} - {} \nListen Here! {}".format(
                 "Hot" if is_daily else self.parent_genre,
                 self.artist,
                 self.title,
