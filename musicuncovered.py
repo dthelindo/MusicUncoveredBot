@@ -6,13 +6,19 @@ to collect data for new, popular tracks in hip hop, pop, country and edm.
 """
 
 import os
+import pymongo
 import requests
 import random
 import shelve
 from requests_oauthlib import OAuth1
 from entry import Entry
 
-db = shelve.open("used_entries")
+# Set up mongo db
+mongo_url = "mongodb+srv://dlindo28:{}@cluster0.lc5ad.mongodb.net/musicuncovered?retryWrites=true&w=majority".format(
+    os.environ.get("MONGO_PASS"))
+client = pymongo.MongoClient(mongo_url)
+db = client["musicuncovered"]
+used_links = db["used_links"]
 
 
 def get_spotify_header():
@@ -70,7 +76,7 @@ def get_entries():
         link = release["external_urls"]["spotify"]
         genres = get_genres(artist_id)
 
-        if link not in db:
+        if used_links.find_one({"link": link}) == None:
             if release["album_type"] == "single":
                 tracks_url = "https://api.spotify.com/v1/albums/" + \
                     release["id"] + "/tracks"
@@ -143,7 +149,7 @@ def send_tweet(entry, is_daily=False):
         os.environ.get("TWITTER_ACCESS_SECRET")
     )
     res = requests.post(url, params=params, auth=auth)
-    db[entry.link] = True
+    used_links.insert_one({"link": entry.link})
     return res
 
 
@@ -154,6 +160,5 @@ if __name__ == "__main__":
     tweet_singles(singles)
     tweet_album(albums)
 
-    if len(db) > 1000:
-        db.clear()
-    db.close()
+    if used_links.count_documents({}) > 1000:
+        used_links.delete_many({})
