@@ -12,3 +12,6 @@ pymongo = {extras = ["srv"], version = "*"}
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+start = "python musicuncovered.py"
