@@ -9,7 +9,6 @@ import os
 import pymongo
 import requests
 import random
-import shelve
 from requests_oauthlib import OAuth1
 from entry import Entry
 
