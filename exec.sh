@@ -2,9 +2,9 @@ DAYOFWEEK=$(date +"%a");
 COMMAND="pipenv run musicuncovered.py";
 CM="pip -V"
 echo DAYOFWEEK: $DAYOFWEEK;
-if [ "$DAYOFWEEK" == "Thu" ]; 
+if [ "$DAYOFWEEK" == "Sun" ]; 
 then   
-   eval $CM;
+  pipenv run musicuncovered.py; 
 else
     echo $DAYOFWEEK;
 fi;
