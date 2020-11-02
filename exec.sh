@@ -1,8 +1,15 @@
-DAYOFWEEK=$(date +"%a");
-COMMAND="pipenv run start";
-if [ $DAYOFWEEK == "Mon" ]; 
+#!/bin/bash 
+function run() {
+  echo "Running..."
+  pipenv install
+  pipenv run start
+}
+
+DAYOFWEEK=$(date +"%a")
+COMMAND="pipenv run start"
+if [ $DAYOFWEEK == "Mon" ] 
 then   
-  eval $COMMAND; 
+  run 
 else
-    echo $DAYOFWEEK;
-fi;
+    echo $DAYOFWEEK
+fi
