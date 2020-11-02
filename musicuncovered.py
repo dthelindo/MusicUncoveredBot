@@ -19,7 +19,6 @@ client = pymongo.MongoClient(mongo_url)
 db = client["musicuncovered"]
 used_links = db["used_links"]
 
-
 def get_spotify_header():
     """Returns the access_token header needed for Spotify API."""
     url = "https://accounts.spotify.com/api/token"

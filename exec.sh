@@ -1,10 +1,16 @@
-DAYOFWEEK=$(date +"%a");
-COMMAND="pipenv run musicuncovered.py";
-CM="pip -V"
-echo DAYOFWEEK: $DAYOFWEEK;
-if [ $DAYOFWEEK == "Mon" ]; 
+#!/bin/bash 
+function run() {
+  echo "Running..."
+  pipenv install
+  pipenv run start
+  echo "Finished!"
+}
+
+DAYOFWEEK=$(date +"%a")
+COMMAND="pipenv run start"
+if [ $DAYOFWEEK == "Mon" ] 
 then   
-  pipenv run musicuncovered.py; 
+  run 
 else
-    echo $DAYOFWEEK;
-fi;
+    echo $DAYOFWEEK
+fi
