@@ -158,9 +158,8 @@ if __name__ == "__main__":
     singles, albums = get_entries()
     singles = sorted(singles, key=lambda e: e.popularity, reverse=True)
     albums = sorted(albums, key=lambda e: e.popularity, reverse=True)
-    print("ok")
-    #tweet_singles(singles)
-    #tweet_album(albums)
+    tweet_singles(singles)
+    tweet_album(albums)
 
     if used_links.count_documents({}) > 1000:
         used_links.delete_many({})
