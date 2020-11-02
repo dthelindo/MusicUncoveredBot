@@ -7,7 +7,6 @@ function run() {
 }
 
 DAYOFWEEK=$(date +"%a")
-COMMAND="pipenv run start"
 if [ $DAYOFWEEK == "Mon" ] 
 then   
   run 
