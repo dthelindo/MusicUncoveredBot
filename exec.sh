@@ -7,7 +7,7 @@ function run() {
 }
 
 DAYOFWEEK=$(date +"%a")
-if [ $DAYOFWEEK == "Mon" ] 
+if [ $DAYOFWEEK == "Sun" ] 
 then   
   run 
 else
