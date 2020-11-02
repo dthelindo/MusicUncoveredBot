@@ -4,7 +4,7 @@ CM="pip -V"
 echo DAYOFWEEK: $DAYOFWEEK;
 if [ $DAYOFWEEK == "Mon" ]; 
 then   
-  pipenv run musicuncovered.py; 
+  eval $COMMAND; 
 else
     echo $DAYOFWEEK;
 fi;
