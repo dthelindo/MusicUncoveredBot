@@ -3,6 +3,7 @@ function run() {
   echo "Running..."
   pipenv install
   pipenv run start
+  echo "Finished!"
 }
 
 DAYOFWEEK=$(date +"%a")
