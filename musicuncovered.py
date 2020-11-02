@@ -19,7 +19,6 @@ client = pymongo.MongoClient(mongo_url)
 db = client["musicuncovered"]
 used_links = db["used_links"]
 
-
 def get_spotify_header():
     """Returns the access_token header needed for Spotify API."""
     url = "https://accounts.spotify.com/api/token"
@@ -159,8 +158,9 @@ if __name__ == "__main__":
     singles, albums = get_entries()
     singles = sorted(singles, key=lambda e: e.popularity, reverse=True)
     albums = sorted(albums, key=lambda e: e.popularity, reverse=True)
-    tweet_singles(singles)
-    tweet_album(albums)
+    print("ok")
+    #tweet_singles(singles)
+    #tweet_album(albums)
 
     if used_links.count_documents({}) > 1000:
         used_links.delete_many({})

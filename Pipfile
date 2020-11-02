@@ -11,7 +11,7 @@ requests-oauthlib = "*"
 pymongo = {extras = ["srv"], version = "*"}
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [scripts]
 start = "python musicuncovered.py"
