@@ -1,5 +1,5 @@
 DAYOFWEEK=$(date +"%a");
-COMMAND="pipenv run musicuncovered.py";
+COMMAND="pipenv run start";
 CM="pip -V"
 echo DAYOFWEEK: $DAYOFWEEK;
 if [ $DAYOFWEEK == "Mon" ]; 
